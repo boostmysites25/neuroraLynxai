@@ -36,22 +36,24 @@ const Home = () => {
     <>
       <WebsiteHeader />
       <section className="h-screen banner relative text-primary_text">
-        <div className="hidden md:flex absolute right-1/2 translate-x-1/2 md:translate-x-0 md:right-0 bottom-0 justify-end translate-y-0 z-[1]">
-          <img
-            loading="lazy"
-            src={aiRobotImg}
-            width="800"
-            height="800"
-            className="object-contain object-center h-full w-full md:w-[40%] opacity-40 md:opacity-100"
-            alt=""
-          />
+        <div className="relative h-full w-full">
+          <div className="hidden lg:flex absolute right-1/2 translate-x-1/2 lg:translate-x-0 lg:right-0 bottom-0 justify-end translate-y-0 z-[1]">
+            <img
+              loading="lazy"
+              src={aiRobotImg}
+              width="800"
+              height="800"
+              className="object-contain object-center h-full w-full lg:w-[40vw] opacity-40 lg:opacity-100"
+              alt=""
+            />
+          </div>
         </div>
         <div className="absolute top-0 w-full h-full bg-gradient-to-br from-background via-primary/40 to-background flex justify-between">
           <div
             data-aos="fade-up"
             className="wrapper flex items-center h-full relative z-10"
           >
-            <div className="flex flex-col gap-4 md:w-[65%]">
+            <div className="flex flex-col gap-4 lg:w-[65%]">
               <p className="sub-heading">
                 Welcome to{" "}
                 <span className="text-primary font-semibold block sm:inline">
@@ -91,9 +93,9 @@ const Home = () => {
       </section>
       <div
         data-aos="fade-up"
-        className="md:-mt-[7rem] py-[2rem] relative z-10 max-w-6xl mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-3 gap-5"
+        className="md:-mt-[7rem] py-[2rem] relative z-10 max-w-6xl mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-7"
       >
-        <div className="bg-primary rounded-lg backdrop-blur-sm p-5">
+        <div className="bg-primary rounded-lg backdrop-blur-sm p-5 shadow-lg shadow-accent/50">
           <div className="flex items-center gap-3 mb-4">
             <Icon1
               width="50"
@@ -111,7 +113,7 @@ const Home = () => {
             needs.
           </p>
         </div>
-        <div className="bg-primary rounded-lg backdrop-blur-sm p-5">
+        <div className="bg-primary rounded-lg backdrop-blur-sm p-5 shadow-lg shadow-accent/50">
           <div className="flex items-center gap-3 mb-4">
             <Icon2
               width="50"
@@ -129,7 +131,7 @@ const Home = () => {
             aligned with your business objectives.
           </p>
         </div>
-        <div className="bg-primary rounded-lg backdrop-blur-sm p-5">
+        <div className="bg-primary rounded-lg backdrop-blur-sm p-5 shadow-lg shadow-accent/50">
           <div className="flex items-center gap-3 mb-4">
             <Icon3
               width="50"

@@ -29,11 +29,11 @@ export const blogs = [
   },
 ];
 const Blogs = () => {
-  return ( 
+  return (
     <>
       <WebsiteHeader />
       <PageBanner title="Blogs" />
-      <div className="bg-secondary/5 relative text-primary_text">
+      <div className="bg-background relative text-primary_text">
         <div className="py-[5rem] flex flex-col gap-5 items-center wrapper">
           <SubHeading heading="Blogs" />
           <h4
@@ -59,52 +59,51 @@ export default Blogs;
 // blog item
 export const BlogItem = ({ blog }) => {
   return (
-    <div
-      data-aos="fade-up"
-      className="bg-secondary/10 rounded-xl p-5 text-primary_text relative z-10 group"
-    >
-      <Link to={`/blogs/${blog.id}`}>
-        <img
-          src={blog.image}
-          alt=""
-          width="600"
-          height="400"
-          className="bg-cover aspect-video w-full rounded-xl group-hover:opacity-85 transition-all duration-200"
-        />
-      </Link>
-      <div className="flex justify-start font-light mt-[0.8rem]">
-        {/* <div className="rounded-2xl bg-primary font-medium px-3 py-1 text-sm w-fit">
+    <div data-aos="fade-up">
+      <div className="bg-primary rounded-xl p-5 text-primary_text relative z-10 group hover:shadow-large hover:shadow-secondary/20 transition-all duration-300">
+        <Link to={`/blogs/${blog.id}`}>
+          <img
+            src={blog.image}
+            alt=""
+            width="600"
+            height="400"
+            className="bg-cover aspect-video w-full rounded-xl"
+          />
+        </Link>
+        <div className="flex justify-start font-light mt-[0.8rem]">
+          {/* <div className="rounded-2xl bg-primary font-medium px-3 py-1 text-sm w-fit">
           Business
         </div> */}
-      </div>
-      <div className="flex flex-col gap-2 mt-[1rem]">
-        <Link
-          to={`/blogs/${blog.id}`}
-          className="text-xl hyphen-auto font-medium leading-tight line-clamp-2 text-ellipsis hover:text-primary transition-all duration-200"
-        >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora iure
-          neque nihil
-          {/* {blog.title} */}
-        </Link>
-        <p className="desc leading-tight text-gray-800 line-clamp-3 text-ellipsis hyphen-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-          porro excepturi et eos corrupti magnam vel voluptatibus aperiam atque
-          voluptatum dolor ullam alias similique hic aliquam provident minima
-          cumque doloremque!
-        </p>
-        {/* <div
+        </div>
+        <div className="flex flex-col gap-2 mt-[1rem]">
+          <Link
+            to={`/blogs/${blog.id}`}
+            className="text-xl hyphen-auto font-medium leading-tight line-clamp-2 text-ellipsis hover:text-secondary transition-all duration-200"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
+            iure neque nihil
+            {/* {blog.title} */}
+          </Link>
+          <p className="desc leading-tight text-gray-800 line-clamp-3 text-ellipsis hyphen-auto">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
+            porro excepturi et eos corrupti magnam vel voluptatibus aperiam
+            atque voluptatum dolor ullam alias similique hic aliquam provident
+            minima cumque doloremque!
+          </p>
+          {/* <div
           dangerouslySetInnerHTML={{ __html: blog.content }}
           className="leading-tight text-gray-800 line-clamp-3 text-ellipsis hyphen-auto"
         ></div> */}
-      </div>
+        </div>
 
-      {/* <div className="flex justify-end font-light mt-[1.5rem]">
+        {/* <div className="flex justify-end font-light mt-[1.5rem]">
         <p className="text-gray-400 text-[.8rem]">12th May 2023</p>
       </div> */}
-      <div className="mt-6 w-full flex justify-center">
-        <Link to={`/blogs/${blog.id}`} className="secondary-btn w-full">
-          Read More
-        </Link>
+        <div className="mt-6 w-full flex justify-center">
+          <Link to={`/blogs/${blog.id}`} className="secondary-btn w-full">
+            Read More
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import SubHeading from "../SubHeading";
 
 const OurValue = () => {
   return (
-    <section className="bg-secondary/10 py-[5rem]">
+    <section className="bg-dark_surface py-[5rem]">
       <div className="wrapper grid md:grid-cols-2 items-center gap-7">
         <div className="flex flex-col items-start gap-5">
           <SubHeading heading="Our Values" />

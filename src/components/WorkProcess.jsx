@@ -48,7 +48,10 @@ const WorkProcess = () => {
         </h1>
         <div className="z-10 grid grid-cols-1 mt-4 sm:grid-cols-2 gap-4 sm:gap-10 mx-auto max-w-6xl">
           {workflow.map((item) => (
-            <div key={item.id} className="relative shadow-inner shadow-primary/40 bg-gradient-to-br from-secondary/30 via-primary/40 to-secondary/30 rounded-lg p-6 overflow-hidden">
+            <div
+              key={item.id}
+              className="relative shadow-inner shadow-primary/40 bg-gradient-to-br from-secondary/30 via-primary/40 to-secondary/30 rounded-lg p-6 overflow-hidden hover:shadow-large hover:shadow-secondary/50 transition-all duration-300"
+            >
               <div className="absolute left-3 top-3 text-[2rem] transition-all duration-300 -z-0 flex justify-center items-center h-[3rem] w-[3rem] rounded-full bg-secondary">
                 <span className="text-white font-extrabold">{item.id}</span>
               </div>

@@ -16,8 +16,8 @@ const Services = () => {
         title="Our Services"
       />
       <AllServices />
-      <OurValue />
       <WhyChooseUs />
+      <OurValue />
       <Testimonials />
       <JoinHappyCustomers />
       <WebsiteFooter />

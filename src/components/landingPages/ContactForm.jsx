@@ -67,7 +67,7 @@ const ContactForm = () => {
   return (
     <div
       id="contact"
-      className="py-[5rem] bg-secondary/5 bg-[100%_40%] relative min-h-[40rem] flex items-center"
+      className="py-[5rem] bg-dark_surface bg-[100%_40%] relative min-h-[40rem] flex items-center"
       // style={{ backgroundImage: `url(${bgImg})` }}
     >
       <div className="absolute top-0 w-full h-full bg-background/70"></div>

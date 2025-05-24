@@ -14,7 +14,7 @@ import { Helmet } from "react-helmet";
 const WebsiteFooter = () => {
   const links = routes.filter((option) => option.path !== "/blogs/:id");
   return (
-    <div className="py-[3rem] bg-dark_surface border-t border-dark_border">
+    <div className="py-[3rem] bg-background border-t border-dark_border">
       <div className="wrapper flex lg:flex-row flex-col gap-7 sm:gap-14 justify-between">
         <div className="">
           <Helmet>

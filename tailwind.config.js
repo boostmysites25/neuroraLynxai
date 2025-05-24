@@ -17,7 +17,7 @@ module.exports = {
         dark_border: "#333333", // Border color for dark theme
       },
       boxShadow: {
-        large: "0px 0px 30px 10px rgba(0, 0, 0, 0.5)",
+        large: "0px 0px 20px 5px rgba(0, 0, 0, 0.5)",
         inner_shadow: "inset 0 0 8px 1px rgba(0, 0, 0, 0.5)",
         dark_glow: "0px 0px 15px 2px rgba(0, 161, 255, 0.15)", // Blue glow for dark theme
       },

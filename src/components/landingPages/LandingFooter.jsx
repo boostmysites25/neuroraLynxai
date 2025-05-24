@@ -12,7 +12,7 @@ import { Helmet } from "react-helmet";
 
 const LandingFooter = () => {
   return (
-    <div className="py-[3rem] bg-dark_surface border-t border-dark_border">
+    <div className="py-[3rem] bg-background border-t border-dark_border">
       <div className="wrapper flex lg:flex-row flex-col gap-7 justify-between">
         <div className="flex flex-col items-center">
           <Helmet>
