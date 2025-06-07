@@ -1,14 +1,18 @@
 import React from "react";
 import vid from "../assets/vids/banner.mp4";
+import serviceVid from "../assets/vids/service.mp4";
 import aboutImg from "../assets/images/aboutus-img3.webp";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SubHeading from "../components/SubHeading";
+import ReactPlayer from "react-player/lazy";
 import { ReactComponent as Icon1 } from "../assets/svgs/services/Web Development.svg";
 import { ReactComponent as Icon2 } from "../assets/svgs/services/App Development.svg";
 import { ReactComponent as Icon3 } from "../assets/svgs/services/Machine Learning Solutions.svg";
+import { services } from "../services";
 import WorkProcess from "../components/WorkProcess";
-import ReactPlayer from "react-player";
 import aiRobotImg from "../assets/images/ai-robot.png";
+import FuturisticButton from "../components/FuturisticButton";
+import SectionDivider from "../components/SectionDivider";
 
 const WebsiteHeader = React.lazy(() =>
   import("../components/website/WebsiteHeader")
@@ -32,23 +36,73 @@ const WhyChooseUs = React.lazy(() => import("../components/WhyChooseUs"));
 const LeadForm = React.lazy(() => import("../components/LeadForm"));
 
 const Home = () => {
+
+  const navigate = useNavigate()
   return (
     <>
       <WebsiteHeader />
-      <section className="h-screen banner relative text-primary_text">
+      <section className="h-screen banner relative text-primary_text overflow-hidden cyberpunk-grid">
+        {/* Digital rain effect */}
+        <div className="digital-rain">
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className="rain-drop"
+              style={{
+                left: `${i * 7}%`,
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: `${8 + (i % 3)}s`,
+              }}
+            >
+              {Array.from({ length: 30 }, () =>
+                Math.random() > 0.5 ? '1' : '0'
+              ).join('')}
+            </div>
+          ))}
+        </div>
+
+        {/* Plasma effect overlay */}
+        <div className="absolute inset-0 plasma-effect"></div>
+
         <div className="relative h-full w-full">
           <div className="hidden lg:flex absolute right-1/2 translate-x-1/2 lg:translate-x-0 lg:right-0 bottom-0 justify-end translate-y-0 z-[1]">
-            <img
-              loading="lazy"
-              src={aiRobotImg}
-              width="800"
-              height="800"
-              className="object-contain object-center h-full w-full lg:w-[40vw] opacity-40 lg:opacity-100"
-              alt=""
-            />
+            <div className="relative">
+              <img
+                loading="lazy"
+                src={aiRobotImg}
+                width="800"
+                height="800"
+                className="object-contain object-center h-full w-full lg:w-[40vw] opacity-40 lg:opacity-100"
+                alt=""
+              />
+              {/* Quantum dots effect */}
+              <div className="absolute top-1/4 left-1/4 quantum-dots w-4 h-4"></div>
+              <div className="absolute top-3/4 right-1/4 quantum-dots w-4 h-4" style={{ animationDelay: '1s' }}></div>
+              {/* Morphing shapes */}
+              <div className="absolute top-1/2 left-0 morphing-shape"></div>
+              <div className="absolute bottom-1/4 right-0 morphing-shape" style={{ animationDelay: '3s' }}></div>
+            </div>
           </div>
         </div>
-        <div className="absolute top-0 w-full h-full bg-gradient-to-br from-background via-primary/40 to-background flex justify-between">
+        <div className="absolute top-0 w-full h-full bg-gradient-to-br from-background/80 via-primary/20 to-background/80 flex justify-between">
+          {/* Matrix rain effect */}
+          <div className="matrix-rain">
+            {[...Array(10)].map((_, i) => (
+              <div
+                key={i}
+                className="matrix-column"
+                style={{
+                  left: `${i * 10}%`,
+                  animationDelay: `${i * 0.5}s`,
+                }}
+              >
+                {Array.from({ length: 20 }, () =>
+                  String.fromCharCode(0x30A0 + Math.random() * 96)
+                ).join('')}
+              </div>
+            ))}
+          </div>
+
           <div
             data-aos="fade-up"
             className="wrapper flex items-center h-full relative z-10"
@@ -56,18 +110,30 @@ const Home = () => {
             <div className="flex flex-col gap-4 lg:w-[65%]">
               <p className="sub-heading">
                 Welcome to{" "}
-                <span className="text-primary font-semibold block sm:inline">
+                <span className="holographic-text font-semibold block sm:inline" data-text="NeuroraLynx AI">
                   NeuroraLynx AI
                 </span>
               </p>
               <h1 className="heading-1 capitalize">
-                Empowering Your Digital Presence with Cutting-Edge Solutions
+                <span className="">
+                  Empowering Your Digital Presence with Cutting-Edge Solutions
+                </span>
               </h1>
               <p className="sub-heading max-w-6xl">
                 At NeuroraLynx AI, we specialize in creating innovative and
                 user-centric digital solutions that not only look great but also
                 drive results.
               </p>
+
+              {/* Futuristic CTA buttons */}
+              {/* <div className="flex gap-4 mt-6">
+                <FuturisticButton onClick={() => navigate('/services')} variant="primary">
+                  Explore Solutions
+                </FuturisticButton>
+                <FuturisticButton onClick={() => navigate('/contact-us')} variant="neon">
+                  Get Started
+                </FuturisticButton>
+              </div> */}
             </div>
           </div>
         </div>
@@ -90,64 +156,107 @@ const Home = () => {
             },
           }}
         />
-      </section>
+      </section >
       <div
         data-aos="fade-up"
         className="md:-mt-[7rem] py-[2rem] relative z-10 max-w-6xl mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-7"
       >
-        <div className="bg-primary rounded-lg backdrop-blur-sm p-5 shadow-lg shadow-accent/50">
-          <div className="flex items-center gap-3 mb-4">
-            <Icon1
-              width="50"
-              height="50"
-              className="w-[4rem] h-[4rem] fill-secondary"
-            />
-            <p className="!text-lg leading-tight !font-medium desc">
-              Web Development
+        <div className="holographic-card rounded-lg p-5 floating-element glow-effect relative overflow-hidden">
+
+
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="pulse-glow rounded-full p-2 bg-background/50 backdrop-blur-sm">
+                <Icon1
+                  width="50"
+                  height="50"
+                  className="w-[4rem] h-[4rem] fill-secondary"
+                />
+              </div>
+              <p className="!text-lg leading-tight !font-medium desc holographic-text">
+                Web Development
+              </p>
+            </div>
+            <p className="desc backdrop-blur-sm bg-background/30 p-2 rounded-lg">
+              Your website is often the first interaction potential customers have
+              with your brand. Our web development team focuses on building
+              responsive, secure, and scalable websites tailored to your business
+              needs.
             </p>
+
           </div>
-          <p className="desc">
-            Your website is often the first interaction potential customers have
-            with your brand. Our web development team focuses on building
-            responsive, secure, and scalable websites tailored to your business
-            needs.
-          </p>
+
+          <div className="scan-line absolute inset-0 pointer-events-none"></div>
+
+          {/* Futuristic corner accents */}
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-secondary"></div>
+          <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-secondary"></div>
+          <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-secondary"></div>
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-secondary"></div>
         </div>
-        <div className="bg-primary rounded-lg backdrop-blur-sm p-5 shadow-lg shadow-accent/50">
-          <div className="flex items-center gap-3 mb-4">
-            <Icon2
-              width="50"
-              height="50"
-              className="w-[4rem] h-[4rem] fill-secondary"
-            />
-            <p className="!text-lg leading-tight !font-medium desc">
-              Mobile App Development
+        <div className="holographic-card rounded-lg p-5 floating-element glow-effect relative overflow-hidden" style={{ animationDelay: '0.5s' }}>
+
+
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="pulse-glow rounded-full p-2 bg-background/50 backdrop-blur-sm">
+                <Icon2
+                  width="50"
+                  height="50"
+                  className="w-[4rem] h-[4rem] fill-secondary"
+                />
+              </div>
+              <p className="!text-lg leading-tight !font-medium desc holographic-text">
+                Mobile App Development
+              </p>
+            </div>
+            <p className="desc backdrop-blur-sm bg-background/30 p-2 rounded-lg">
+              In a mobile-first world, having a functional and engaging app is
+              crucial. Our app development services encompass everything from
+              ideation to deployment, ensuring your app is intuitive, fast, and
+              aligned with your business objectives.
             </p>
           </div>
-          <p className="desc">
-            In a mobile-first world, having a functional and engaging app is
-            crucial. Our app development services encompass everything from
-            ideation to deployment, ensuring your app is intuitive, fast, and
-            aligned with your business objectives.
-          </p>
+
+          <div className="scan-line absolute inset-0 pointer-events-none"></div>
+
+          {/* Futuristic corner accents */}
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-secondary"></div>
+          <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-secondary"></div>
+          <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-secondary"></div>
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-secondary"></div>
         </div>
-        <div className="bg-primary rounded-lg backdrop-blur-sm p-5 shadow-lg shadow-accent/50">
-          <div className="flex items-center gap-3 mb-4">
-            <Icon3
-              width="50"
-              height="50"
-              className="w-[4rem] h-[4rem] fill-secondary"
-            />
-            <p className="!text-lg leading-tight !font-medium desc">
-              AI Development
+        <div className="holographic-card rounded-lg p-5 floating-element glow-effect relative overflow-hidden" style={{ animationDelay: '1s' }}>
+
+
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="pulse-glow rounded-full p-2 bg-background/50 backdrop-blur-sm">
+                <Icon3
+                  width="50"
+                  height="50"
+                  className="w-[4rem] h-[4rem] fill-secondary"
+                />
+              </div>
+              <p className="!text-lg leading-tight !font-medium desc holographic-text">
+                AI Development
+              </p>
+            </div>
+            <p className="desc backdrop-blur-sm bg-background/30 p-2 rounded-lg">
+              Artificial Intelligence is revolutionizing industries, and we're at
+              the forefront of this transformation. Our AI development solutions
+              help businesses automate processes, gain insights from data, and
+              enhance customer experiences.
             </p>
           </div>
-          <p className="desc">
-            Artificial Intelligence is revolutionizing industries, and we're at
-            the forefront of this transformation. Our AI development solutions
-            help businesses automate processes, gain insights from data, and
-            enhance customer experiences.
-          </p>
+
+          <div className="scan-line absolute inset-0 pointer-events-none"></div>
+
+          {/* Futuristic corner accents */}
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-secondary"></div>
+          <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-secondary"></div>
+          <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-secondary"></div>
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-secondary"></div>
         </div>
       </div>
       <section className="">
@@ -199,8 +308,10 @@ const Home = () => {
                 </p>
               </div>
               <div className="w-fit mt-4 justify-start">
-                <Link to="/about-us" className="primary-btn">
-                  Know More
+                <Link to="/about-us">
+                  <FuturisticButton variant="primary">
+                    Know More
+                  </FuturisticButton>
                 </Link>
               </div>
             </div>

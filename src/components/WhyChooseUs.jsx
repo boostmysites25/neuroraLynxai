@@ -59,11 +59,11 @@ const WhyChooseUs = () => {
                   className="flex shadow-inner shadow-primary/40 flex-col group items-center gap-1 bg-secondary/10 rounded-xl p-5 transition-all duration-200"
                 >
                   <div className="flex justify-between items-center w-full">
-                    <p className="text-center !text-2xl mt-2 !font-semibold desc !text-white">
+                    <p className="text-center !text-2xl mt-2 !font-semibold desc !text-white !leading-[0]">
                       {item.title}
                       <span className="text-5xl text-secondary">.</span>
                     </p>
-                    <div className="w-[3.5rem] h-[3.5rem] flex justify-center items-center rounded-full bg-secondary">
+                    <div className="w-[3.5rem] min-w-[3.5rem] h-[3.5rem] flex justify-center items-center rounded-full bg-secondary">
                       <item.icon className="w-[2rem] fill-white h-[2rem] transition-all duration-200" />
                     </div>
                   </div>

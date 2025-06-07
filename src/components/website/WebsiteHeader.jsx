@@ -5,6 +5,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { logoImg, routes } from "../../constant";
 import { X } from "lucide-react";
 import { Helmet } from "react-helmet";
+import FuturisticButton from "../FuturisticButton";
 
 const WebsiteHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +39,7 @@ const WebsiteHeader = () => {
               src={logoImg}
               width="75"
               height="75"
-              className="w-[4.5rem] md:w-[5.5rem] scale-105 object-contain"
+              className="w-[9rem] md:w-[10rem] scale-105 object-contain"
               alt="logo"
             />
           </NavLink>
@@ -46,9 +47,8 @@ const WebsiteHeader = () => {
             {navLinks.map((option) => (
               <NavLink
                 to={`${option.path}`}
-                className={`link ${
-                  option.path === pathname && "!text-secondary font-semibold"
-                }`}
+                className={`link ${option.path === pathname && "!text-secondary font-semibold"
+                  }`}
                 key={option.path}
               >
                 {option.name}
@@ -56,13 +56,10 @@ const WebsiteHeader = () => {
             ))}
             <NavLink
               to="/contact-us"
-              className="primary-btn"
-              spy={true}
-              smooth={true}
-              offset={-60}
-              duration={1000}
             >
-              Contact Us
+              <FuturisticButton variant="primary">
+                Contact Us
+              </FuturisticButton>
             </NavLink>
           </div>
         </div>

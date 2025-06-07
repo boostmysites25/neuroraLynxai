@@ -51,7 +51,7 @@ const LandingHeader = () => {
               src={logoImg}
               width="75"
               height="75"
-              className="w-[4.5rem] md:w-[5.5rem] scale-105 object-contain"
+              className="w-[9rem] md:w-[10rem] scale-105 object-contain"
               alt="logo"
             />
           </Scroll>

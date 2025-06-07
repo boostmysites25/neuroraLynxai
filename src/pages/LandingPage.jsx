@@ -49,7 +49,7 @@ const LandingPage = ({ page }) => {
           >
             <p className="sub-heading">
               Welcome to{" "}
-              <span className="text-primary font-semibold block sm:inline">
+              <span className="holographic-text font-semibold block sm:inline" data-text="NeuroraLynx AI">
                 NeuroraLynx AI
               </span>
             </p>
@@ -154,19 +154,26 @@ const LandingPage = ({ page }) => {
           {services.map((service) => (
             <div
               key={service.id}
-              className="bg-gradient-to-br from-secondary/30 via-primary/40 to-secondary/30 hover:bg-secondary group hover:text-white transition-all duration-300 rounded-lg p-5 flex text-center flex-col justify-between border border-dark_border hover:border-secondary"
+              className="holographic-card group hover:text-white transition-all duration-300 rounded-lg p-5 flex text-center flex-col justify-between border border-secondary/30 hover:border-secondary relative overflow-hidden"
             >
-              <div className="flex flex-col items-center">
-                <div className="w-[6rem] h-[6rem] flex justify-center items-center relative">
+
+
+              {/* Scan line effect */}
+              <div className="scan-line absolute inset-0 pointer-events-none"></div>
+
+              {/* Futuristic corner accents */}
+              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-secondary"></div>
+              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-secondary"></div>
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-secondary"></div>
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-secondary"></div>
+
+              <div className="flex flex-col items-center relative z-10">
+                <div className="w-[6rem] h-[6rem] flex justify-center items-center relative pulse-glow rounded-full backdrop-blur-sm">
                   <div className="absolute z-[1] top-0 w-0 group-hover:w-full h-full transition-all duration-300 bg-primary rounded-full"></div>
                   <service.icon className="z-[2] w-[4rem] h-[4rem] fill-secondary group-hover:fill-white" />
                 </div>
-                <h6 className="text-xl font-medium mt-3 text-primary_text group-hover:text-white">
-                  {service.title}
-                </h6>
-                <p className="desc mt-2 text-secondary_text group-hover:text-white">
-                  {service.description}
-                </p>
+                <h6 className="text-xl font-medium mt-3 text-primary_text group-hover:text-white holographic-text">{service.title}</h6>
+                <p className="desc mt-2 text-secondary_text group-hover:text-white backdrop-blur-sm bg-background/30 p-2 rounded-lg">{service.description}</p>
               </div>
             </div>
           ))}

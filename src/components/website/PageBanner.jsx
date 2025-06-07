@@ -4,7 +4,7 @@ import bannerImg from "../../assets/images/banner.webp";
 const PageBanner = ({ title, desc }) => {
   return (
     <div
-      className="w-full min-h-[55vh] h-fit py-[1rem] bg-cover bg-top relative flex items-center justify-center"
+      className="w-full min-h-[60vh] h-fit py-[1rem] bg-cover bg-top relative flex items-center justify-center"
       style={{ 
         backgroundImage: `url(${bannerImg})`,
         backgroundBlendMode: 'overlay',

@@ -15,8 +15,10 @@ import { LoadingSpinner } from "./components/LoadingSpinner";
 import ScrollToTop from "./components/ScrollToTop";
 import WhatsAppIcon from "./components/WhatsAppIcon";
 import { Toaster } from "react-hot-toast";
+import AnimatedBackground from "./components/AnimatedBackground";
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const ThankYou = lazy(() => import("./pages/ThankYou"));
+const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 
 AOS.init({
   once: true,
@@ -31,6 +33,7 @@ function App() {
     <Suspense fallback={<LoadingSpinner />}>
       <SpinnerContextProvider>
         <Router>
+          <AnimatedBackground />
           <LoadingSpinnerContext />
           <WhatsAppIcon />
           <ScrollToTop />
@@ -60,6 +63,12 @@ function App() {
             <Route
               path="/app-development"
               element={<LandingPage page={"app-development"} />}
+            />
+            
+            {/* Service Detail Pages */}
+            <Route
+              path="/services/:slug"
+              element={<ServiceDetail />}
             />
           </Routes>
         </Router>
