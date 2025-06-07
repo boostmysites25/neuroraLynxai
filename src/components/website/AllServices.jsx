@@ -71,7 +71,7 @@ const AllServices = () => {
           data-aos="fade-up"
           className="heading-2 max-w-[60rem] mx-auto text-start sm:text-center holographic-text energy-field p-4"
         >
-          Our Services are <span className="text-secondary glitch" data-text="Tailored">Tailored</span> to Your Needs
+          Our Services are <span className="text-secondary" data-text="Tailored">Tailored</span> to Your Needs
         </h2>
 
         <div
