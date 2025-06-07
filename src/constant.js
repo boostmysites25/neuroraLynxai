@@ -30,7 +30,7 @@ export const companyDetails = {
   phone: "+917846815456",
   address:
     "Ground floor, 51, 3rd B Cross, Doddanekundi, Rd Gururaja La yout Vibhutipura Extension Doddanekk, Bangalore, Karnataka, 560037",
-  email: "abc@xyz.com",
+  email: "info@neuroralynxai.com",
   linkedin: "",
   instagram: "",
   twitter: "",
