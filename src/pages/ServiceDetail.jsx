@@ -1,35 +1,22 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import ReactPlayer from "react-player/lazy";
 import { services } from "../services";
+import WebsiteHeader from "../components/website/WebsiteHeader";
+import WebsiteFooter from "../components/website/WebsiteFooter";
+import PageBanner from "../components/website/PageBanner";
+import TrustWorthySection from "../components/TrustWorthySection";
+import JoinHappyCustomers from "../components/JoinHappyCustomers";
 import FuturisticButton from "../components/FuturisticButton";
+import webDevVid from "../assets/vids/services/webdev.mp4";
+import appDevVid from "../assets/vids/services/appdev.mp4";
+import aiVid from "../assets/vids/services/ai.mp4";
+import uiuxVid from "../assets/vids/services/uiux.mp4";
 
-// Lazy load components
-const ReactPlayer = lazy(() => import("react-player/lazy"));
-const WebsiteHeader = lazy(() => import("../components/website/WebsiteHeader"));
-const WebsiteFooter = lazy(() => import("../components/website/WebsiteFooter"));
-const PageBanner = lazy(() => import("../components/website/PageBanner"));
-const TrustWorthySection = lazy(() => import("../components/TrustWorthySection"));
-const JoinHappyCustomers = lazy(() => import("../components/JoinHappyCustomers"));
-
-// Lazy load media assets
-const serviceMedia = {
-  web: {
-    video: () => import("../assets/vids/services/webdev.mp4").then(module => module.default),
-    image: () => import("../assets/images/services/webdev.webp").then(module => module.default)
-  },
-  app: {
-    video: () => import("../assets/vids/services/appdev.mp4").then(module => module.default),
-    image: () => import("../assets/images/services/appdev.webp").then(module => module.default)
-  },
-  ai: {
-    video: () => import("../assets/vids/services/ai.mp4").then(module => module.default),
-    image: () => import("../assets/images/services/ai.webp").then(module => module.default)
-  },
-  uiux: {
-    video: () => import("../assets/vids/services/uiux.mp4").then(module => module.default),
-    image: () => import("../assets/images/services/uiux.png").then(module => module.default)
-  }
-};
+import webDevImg from "../assets/images/services/webdev.webp";
+import appDevImg from "../assets/images/services/appdev.webp";
+import aiDevImg from "../assets/images/services/ai.webp";
+import uiuxImg from "../assets/images/services/uiux.png";
 
 const ServiceDetail = () => {
   const { slug } = useParams();
@@ -46,51 +33,26 @@ const ServiceDetail = () => {
     if (foundService) {
       setService(foundService);
 
-      // Load media assets dynamically based on service type
-      const loadMediaAssets = async () => {
-        try {
-          if (foundService.title.includes("Web")) {
-            const [image, video] = await Promise.all([
-              serviceMedia.web.image(),
-              serviceMedia.web.video()
-            ]);
-            setServiceImage(image);
-            setServiceVideo(video);
-          } else if (foundService.title.includes("App")) {
-            const [image, video] = await Promise.all([
-              serviceMedia.app.image(),
-              serviceMedia.app.video()
-            ]);
-            setServiceImage(image);
-            setServiceVideo(video);
-          } else if (foundService.title.includes("AI")) {
-            const [image, video] = await Promise.all([
-              serviceMedia.ai.image(),
-              serviceMedia.ai.video()
-            ]);
-            setServiceImage(image);
-            setServiceVideo(video);
-          } else if (foundService.title.includes("UI/UX")) {
-            const [image, video] = await Promise.all([
-              serviceMedia.uiux.image(),
-              serviceMedia.uiux.video()
-            ]);
-            setServiceImage(image);
-            setServiceVideo(video);
-          }
-          setLoading(false);
-        } catch (error) {
-          console.error("Failed to load media assets:", error);
-          setLoading(false);
-        }
-      };
-
-      loadMediaAssets();
+      // Set the appropriate image based on service title
+      if (foundService.title.includes("Web")) {
+        setServiceImage(webDevImg);
+        setServiceVideo(webDevVid);
+      } else if (foundService.title.includes("App")) {
+        setServiceImage(appDevImg);
+        setServiceVideo(appDevVid);
+      } else if (foundService.title.includes("AI")) {
+        setServiceImage(aiDevImg);
+        setServiceVideo(aiVid);
+      } else if (foundService.title.includes("UI/UX")) {
+        setServiceImage(uiuxImg);
+        setServiceVideo(uiuxVid);
+      }
     } else {
       // If service not found, redirect to services page
       navigate("/services");
-      setLoading(false);
     }
+
+    setLoading(false);
   }, [slug, navigate]);
 
   if (loading || !service) {
@@ -99,21 +61,10 @@ const ServiceDetail = () => {
     </div>;
   }
 
-  // Loading component for Suspense fallback
-  const ComponentLoader = () => (
-    <div className="flex items-center justify-center h-32">
-      <div className="w-8 h-8 border-4 border-secondary border-t-transparent rounded-full animate-spin"></div>
-    </div>
-  );
-
   return (
     <>
-      <Suspense fallback={<ComponentLoader />}>
-        <WebsiteHeader />
-      </Suspense>
-      <Suspense fallback={<ComponentLoader />}>
-        <PageBanner title={service.title} />
-      </Suspense>
+      <WebsiteHeader />
+      <PageBanner title={service.title} />
 
       {/* Hero Section with Video Background */}
       <section className="relative overflow-hidden bg-background py-20">
@@ -294,34 +245,26 @@ const ServiceDetail = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative holographic-card rounded-lg overflow-hidden aspect-video">
-              <Suspense fallback={
-                <div className="w-full h-full bg-dark_surface flex items-center justify-center">
-                  <div className="w-10 h-10 border-4 border-secondary border-t-transparent rounded-full animate-spin"></div>
-                </div>
-              }>
-                {serviceVideo && (
-                  <ReactPlayer
-                    url={serviceVideo}
-                    playing={true}
-                    loop={true}
-                    muted={true}
-                    width="100%"
-                    height="100%"
-                    playsinline={true}
-                    config={{
-                      file: {
-                        attributes: {
-                          style: {
-                            objectFit: 'cover',
-                            width: '100%',
-                            height: '100%'
-                          }
-                        }
+              <ReactPlayer
+                url={serviceVideo}
+                playing={true}
+                loop={true}
+                muted={true}
+                width="100%"
+                height="100%"
+                playsinline={true}
+                config={{
+                  file: {
+                    attributes: {
+                      style: {
+                        objectFit: 'cover',
+                        width: '100%',
+                        height: '100%'
                       }
-                    }}
-                  />
-                )}
-              </Suspense>
+                    }
+                  }
+                }}
+              />
 
               {/* Scan line effect */}
               <div className="scan-line absolute inset-0 pointer-events-none"></div>
@@ -397,34 +340,26 @@ const ServiceDetail = () => {
                       transform: index % 2 === 0 ? 'scale(1.1)' : 'scale(1.1) rotate(180deg)'
                     }}
                   >
-                    <Suspense fallback={
-                      <div className="w-full h-full bg-dark_surface flex items-center justify-center">
-                        <div className="w-8 h-8 border-4 border-secondary border-t-transparent rounded-full animate-spin"></div>
-                      </div>
-                    }>
-                      {serviceVideo && (
-                        <ReactPlayer
-                          url={serviceVideo}
-                          playing={true}
-                          loop={true}
-                          muted={true}
-                          width="100%"
-                          height="100%"
-                          playsinline={true}
-                          config={{
-                            file: {
-                              attributes: {
-                                style: {
-                                  objectFit: 'cover',
-                                  width: '100%',
-                                  height: '100%'
-                                }
-                              }
+                    <ReactPlayer
+                      url={serviceVideo}
+                      playing={true}
+                      loop={true}
+                      muted={true}
+                      width="100%"
+                      height="100%"
+                      playsinline={true}
+                      config={{
+                        file: {
+                          attributes: {
+                            style: {
+                              objectFit: 'cover',
+                              width: '100%',
+                              height: '100%'
                             }
-                          }}
-                        />
-                      )}
-                    </Suspense>
+                          }
+                        }
+                      }}
+                    />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-primary/50 to-background/80"></div>
                 </div>
@@ -480,15 +415,9 @@ const ServiceDetail = () => {
         </div>
       </section>
 
-      <Suspense fallback={<ComponentLoader />}>
-        <TrustWorthySection />
-      </Suspense>
-      <Suspense fallback={<ComponentLoader />}>
-        <JoinHappyCustomers />
-      </Suspense>
-      <Suspense fallback={<ComponentLoader />}>
-        <WebsiteFooter />
-      </Suspense>
+      <TrustWorthySection />
+      <JoinHappyCustomers />
+      <WebsiteFooter />
     </>
   );
 };
