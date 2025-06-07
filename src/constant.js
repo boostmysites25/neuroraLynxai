@@ -1,10 +1,5 @@
+import { lazy } from "react";
 import logoImg from "./assets/logo/logo.png";
-import AboutUs from "./pages/AboutUs";
-import ContactUs from "./pages/ContactUs";
-import Home from "./pages/Home";
-import Services from "./pages/Services";
-import Blogs from "./pages/Blogs";
-import BlogDetails from "./pages/BlogDetails";
 
 // all services
 import { ReactComponent as allServiceIcon1 } from "./assets/svgs/services/Web Development.svg";
@@ -23,6 +18,14 @@ import { ReactComponent as webServiceIcon1 } from "./assets/svgs/services/E-Comm
 import { ReactComponent as webServiceIcon2 } from "./assets/svgs/services/Social Media Websites.svg";
 import { ReactComponent as webServiceIcon3 } from "./assets/svgs/services/Web Development.svg";
 import { ReactComponent as webServiceIcon4 } from "./assets/svgs/services/UIUX Design.svg";
+
+// Lazy load all page components
+const Home = lazy(() => import("./pages/Home"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const ContactUs = lazy(() => import("./pages/ContactUs"));
+const Services = lazy(() => import("./pages/Services"));
+const Blogs = lazy(() => import("./pages/Blogs"));
+const BlogDetails = lazy(() => import("./pages/BlogDetails"));
 
 export { logoImg };
 
